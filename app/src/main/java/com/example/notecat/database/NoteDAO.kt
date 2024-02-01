@@ -10,7 +10,7 @@ import androidx.room.Update
 import com.example.notecat.model.Note
 
 @Dao
-interface DAO {
+interface NoteDAO {
     @Query("SELECT * FROM Note ORDER BY id DESC")
     suspend fun getAllNotes(): LiveData<List<Note>>
 
