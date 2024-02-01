@@ -6,19 +6,21 @@
     android:padding="15dp">
 
     <TextView
+        android:id="@+id/title_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:padding="5dp"
-        android:text="Tiêu đề"
+        android:text="@string/tieudetitle"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/content_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Nội dung"
+        android:text="@string/noidungcontents"
         android:inputType="none"/>
 
 </LinearLayout>

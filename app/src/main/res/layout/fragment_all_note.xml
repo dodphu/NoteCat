@@ -29,7 +29,7 @@
 
 
     <EditText
-        android:id="@+id/edit_text_id"
+        android:id="@+id/edit_text_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -42,13 +42,13 @@
         android:inputType="text"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_Mynote"
+        android:id="@+id/rycv_Mynote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:transitionGroup="true"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_id"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_search"
         tools:listitem="@layout/note_item"
         />
 

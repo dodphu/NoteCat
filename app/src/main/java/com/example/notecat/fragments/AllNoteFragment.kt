@@ -1,60 +1,42 @@
 package com.example.notecat.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notecat.R
+import com.example.notecat.adapter.adapter_note
+import com.example.notecat.databinding.FragmentAllNoteBinding
+import com.example.notecat.model.Note
+import com.example.notecat.viewmodel.NoteViewModel
+import kotlin.math.log
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentAllNoteBinding.bind(view)
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AllNoteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AllNoteFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+        activity?.let { activity ->
+            val edtSearchNote = binding.editTextSearch
+            val rycv_note = binding.rycvMynote
+            val adapterNote = adapter_note()
+            rycv_note.adapter = adapterNote
+            rycv_note.layoutManager =
+                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_note, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AllNoteFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AllNoteFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+            try {
+                val noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
+                noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
+                    adapterNote.updateData(listNotes)
+                    //wordViewModel.insert(Word("Alpha", "FirstLetter"))
+                    val note333 : Note = Note(3,"adu","aduu","add")
+                    noteViewModel.addNoteVM(note333)
                 }
+            } catch (e: Exception) {
+                Log.d("phu", "onViewCreated: $e")
             }
+        }
     }
 }
