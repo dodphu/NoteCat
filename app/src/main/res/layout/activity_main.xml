@@ -5,12 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mainfrag"
+        android:id="@+id/frag_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.notecat.fragment.AllNoteFragment"/>
+        android:name="com.example.notecat.fragments.AllNoteFragment"/>
 
   </FrameLayout>
