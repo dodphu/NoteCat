@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
+    android:id="@+id/frag_allNote"
     tools:context=".fragment.AllNoteFragment">
 
     <TextView
@@ -46,7 +47,8 @@
         android:clipToPadding="false"
         android:transitionGroup="true"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_id" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_id"
+        tools:listitem="@layout/note_item"/>
 
     <ImageView
         android:id="@+id/imgv_noTask"
