@@ -38,7 +38,8 @@
         android:hint="@string/timkiemghichu"
         android:padding="15dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtMyNote" />
+        app:layout_constraintTop_toBottomOf="@id/txtMyNote"
+        android:inputType="text"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Mynote"
