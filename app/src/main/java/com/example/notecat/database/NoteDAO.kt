@@ -12,7 +12,7 @@ import com.example.notecat.model.Note
 @Dao
 interface NoteDAO {
     @Query("SELECT * FROM Note ORDER BY id DESC")
-    suspend fun getAllNotes(): LiveData<List<Note>>
+    fun getAllNotes(): LiveData<List<Note>>
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addNote(note: Note)
@@ -24,5 +24,5 @@ interface NoteDAO {
     suspend fun deleteNote(note: Note)
 
     @Query("SELECT * FROM note WHERE title LIKE :keySearch OR content LIKE :keySearch OR DATE LIKE :keySearch")
-    suspend fun searchNotes(keySearch: String)
+    fun searchNotes(keySearch: String): LiveData<List<Note>>
 }

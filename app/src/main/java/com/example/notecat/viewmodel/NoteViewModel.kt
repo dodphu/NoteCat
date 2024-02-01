@@ -2,6 +2,7 @@ package com.example.notecat.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.notecat.model.Note
 import com.example.notecat.repository.NoteRepository
@@ -10,10 +11,8 @@ import kotlinx.coroutines.launch
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
     private val noteRepository = NoteRepository(application.applicationContext)
-    fun getAllNotesVM() {
-        viewModelScope.launch(Dispatchers.IO) {
-            noteRepository.getAllNotesRepos()
-        }
+    fun getAllNotesVM(): LiveData<List<Note>> {
+        return noteRepository.getAllNotesRepos()
     }
 
     fun addNoteVM(note: Note) {
@@ -34,9 +33,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun searchNoteVM(keySearch: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            noteRepository.searchNoteRepos(keySearch)
-        }
+    fun searchNoteVM(keySearch: String): LiveData<List<Note>> {
+        return noteRepository.searchNoteRepos(keySearch)
     }
 }
