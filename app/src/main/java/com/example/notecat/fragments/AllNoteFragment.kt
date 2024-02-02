@@ -1,5 +1,6 @@
 package com.example.notecat.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notecat.R
+import com.example.notecat.activities.AddEditNoteActivity
 import com.example.notecat.adapter.adapter_note
 import com.example.notecat.databinding.FragmentAllNoteBinding
 import com.example.notecat.model.Note
@@ -22,7 +24,8 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         val binding = FragmentAllNoteBinding.bind(view)
 
         val edtSearchNote = binding.editTextSearch
-        val layout_notask = binding.layoutNotask
+        val txt_notask = binding.txtNoTask
+        val img_notask = binding.imgvNoTask
         val rycv_note = binding.rycvMynote
         val adapterNote = adapter_note()
         rycv_note.adapter = adapterNote
@@ -32,11 +35,13 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
 
         noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
             if (!listNotes.isNullOrEmpty()) {
-                layout_notask.visibility = View.GONE
+                img_notask.visibility = View.GONE
+                txt_notask.visibility = View.GONE
                 adapterNote.updateNotes(listNotes)
                 Log.d("phu", "onViewCreated: ${listNotes[0]}")
             } else {
-                layout_notask.visibility = View.VISIBLE
+                img_notask.visibility = View.VISIBLE
+                txt_notask.visibility = View.VISIBLE
             }
         }
 
@@ -44,7 +49,10 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         val fab = binding.fabAdd
         fab.setOnClickListener {
             //noteViewModel.addNoteVM(Note("phuu", "cccc", "phuu"))
-            noteViewModel.addNoteVM(Note.createNote("phu3", "adu", "22-12 -2222"))
+            //noteViewModel.addNoteVM(Note.createNote("phu3", "adu", "22-12 -2222"))
+            val intent = Intent(requireContext(), AddEditNoteActivity::class.java)
+            startActivity(intent)
+
         }
     }
 }
