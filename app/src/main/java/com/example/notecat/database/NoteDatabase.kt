@@ -16,7 +16,7 @@ abstract class NoteDatabase : RoomDatabase() {
             if (instance == null) {
                 synchronized(this) {
                     instance =
-                        Room.databaseBuilder(context, NoteDatabase::class.java, "notedata.db")
+                        Room.databaseBuilder(context.applicationContext, NoteDatabase::class.java, "notedata.db")
                             .build()
                 }
             }

@@ -9,6 +9,8 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.notecat.model.Note
 
+
+
 @Dao
 interface NoteDAO {
     @Query("SELECT * FROM Note ORDER BY id DESC")
@@ -23,6 +25,6 @@ interface NoteDAO {
     @Delete()
     suspend fun deleteNote(note: Note)
 
-    @Query("SELECT * FROM note WHERE title LIKE :keySearch OR content LIKE :keySearch OR DATE LIKE :keySearch")
+    @Query("SELECT * FROM note WHERE title LIKE :keySearch OR content LIKE :keySearch")
     fun searchNotes(keySearch: String): LiveData<List<Note>>
 }

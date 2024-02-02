@@ -36,6 +36,7 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/edt_title_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Tiêu đề"
@@ -46,9 +47,9 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"/>
     <EditText
+        android:id="@+id/edt_content_add"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="Nội dung"
         android:background="@color/white"
         android:padding="15dp"
         android:textSize="25sp"

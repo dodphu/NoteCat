@@ -9,10 +9,12 @@ import com.example.notecat.databinding.NoteItemBinding
 import com.example.notecat.model.Note
 
 class adapter_note : RecyclerView.Adapter<adapter_note.NoteViewHolder>() {
-    private var list_notes: List<Note> = ArrayList()
+    private var list_notes: List<Note> = listOf()
 
     inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = NoteItemBinding.bind(itemView)
+        val title = binding.titleItem
+        val content = binding.contentItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): adapter_note.NoteViewHolder {
@@ -21,15 +23,15 @@ class adapter_note : RecyclerView.Adapter<adapter_note.NoteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: adapter_note.NoteViewHolder, position: Int) {
-        holder.binding.titleItem.text = list_notes[position].title
-        holder.binding.contentItem.text = list_notes[position].content
+        holder.title.text = list_notes[position].title
+        holder.content.text = list_notes[position].content
     }
 
     override fun getItemCount(): Int {
         return list_notes.size
     }
-    fun updateData(newNoteList: List<Note>) {
-        list_notes = newNoteList
+    fun updateNotes(newNotes: List<Note>) {
+        list_notes = newNotes
         notifyDataSetChanged()
     }
 }
