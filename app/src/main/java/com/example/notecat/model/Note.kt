@@ -7,10 +7,11 @@ import java.io.Serializable
 
 @Entity
 data class Note(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null,
     val title: String,
     val content: String,
     val date: String?
-) : Serializable{
-    @PrimaryKey(autoGenerate = true)
-    var id: Int? = 0
+) : Serializable {
+    constructor(title: String, content: String, date: String?) : this(null, title, content, date)
 }

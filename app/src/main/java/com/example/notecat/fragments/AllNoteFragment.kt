@@ -20,18 +20,17 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentAllNoteBinding.bind(view)
 
-
         val edtSearchNote = binding.editTextSearch
         val rycv_note = binding.rycvMynote
         val adapterNote = adapter_note()
         rycv_note.adapter = adapterNote
         rycv_note.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
-        val noteViewModel = ViewModelProvider(requireActivity())[NoteViewModel::class.java]
+        val noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
-        noteViewModel.addNoteVM(Note("add", "ec", "kkk"))
         noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
             adapterNote.updateNotes(listNotes)
+            Log.d("phu", "onViewCreated: ${listNotes[0]}")
         }
 
         val fab = binding.fabAdd
