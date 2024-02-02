@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         val binding = FragmentAllNoteBinding.bind(view)
 
         val edtSearchNote = binding.editTextSearch
+        val layout_notask = binding.layoutNotask
         val rycv_note = binding.rycvMynote
         val adapterNote = adapter_note()
         rycv_note.adapter = adapterNote
@@ -29,9 +31,15 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         val noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
         noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
-            adapterNote.updateNotes(listNotes)
-            Log.d("phu", "onViewCreated: ${listNotes[0]}")
+            if (!listNotes.isNullOrEmpty()) {
+                layout_notask.visibility = View.GONE
+                adapterNote.updateNotes(listNotes)
+                Log.d("phu", "onViewCreated: ${listNotes[0]}")
+            } else {
+                layout_notask.visibility = View.VISIBLE
+            }
         }
+
 
         val fab = binding.fabAdd
         fab.setOnClickListener {
