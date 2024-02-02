@@ -13,5 +13,10 @@ data class Note(
     val content: String,
     val date: String?
 ) : Serializable {
-    constructor(title: String, content: String, date: String?) : this(null, title, content, date)
+   // constructor(title: String, content: String, date: String?) : this(null, title, content, date)
+   companion object {
+       fun createNote(title: String, content: String, date: String?): Note {
+           return Note(null, title, content, date)
+       }
+   }
 }

@@ -35,7 +35,8 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
 
         val fab = binding.fabAdd
         fab.setOnClickListener {
-            noteViewModel.addNoteVM(Note("phuu", "cccc", "phuu"))
+            //noteViewModel.addNoteVM(Note("phuu", "cccc", "phuu"))
+            noteViewModel.addNoteVM(Note.createNote("phu3", "adu", "22-12 -2222"))
         }
     }
 }
