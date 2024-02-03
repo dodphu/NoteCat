@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home_menu"
+        android:title="Notes"
+        android:icon="@drawable/notes64" />
+    <item android:id="@+id/group_menu"
+        android:title="Groups"
+        android:icon="@drawable/panel_group"/>
+    <item android:id="@+id/todo_menu"
+        android:title="Todos"
+        android:icon="@drawable/checklist"/>
+    <item android:id="@+id/setting_menu"
+        android:title="Settings"
+        android:icon="@drawable/settings"/>
+
+</menu>
