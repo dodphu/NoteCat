@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,7 +54,28 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
             //noteViewModel.addNoteVM(Note.createNote("phu3", "adu", "22-12 -2222"))
             val intent = Intent(requireContext(), AddEditNoteActivity::class.java)
             startActivity(intent)
+        }
+
+        edtSearchNote.addTextChangedListener {
+            if (it!!.trim().isEmpty()) {
+                noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
+                    if (!listNotes.isNullOrEmpty()) {
+                        img_notask.visibility = View.GONE
+                        txt_notask.visibility = View.GONE
+                        adapterNote.updateNotes(listNotes)
+                        Log.d("phu", "onViewCreated: ${listNotes[0]}")
+                    } else {
+                        img_notask.visibility = View.VISIBLE
+                        txt_notask.visibility = View.VISIBLE
+                    }
+                }
+            } else {
+                noteViewModel.searchNoteVM("%${it}%").observe(viewLifecycleOwner) { listNotes ->
+                    adapterNote.updateNotes(listNotes)
+                }
+            }
 
         }
+
     }
 }
