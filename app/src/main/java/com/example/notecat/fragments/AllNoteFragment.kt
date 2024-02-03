@@ -5,21 +5,20 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Toast
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notecat.R
 import com.example.notecat.activities.AddEditNoteActivity
-import com.example.notecat.adapter.adapter_note
+import com.example.notecat.adapter.AdapterNote
 import com.example.notecat.databinding.FragmentAllNoteBinding
 import com.example.notecat.model.Note
 import com.example.notecat.viewmodel.NoteViewModel
-import kotlin.math.log
 
 class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentAllNoteBinding.bind(view)
@@ -28,12 +27,16 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         val txt_notask = binding.txtNoTask
         val img_notask = binding.imgvNoTask
         val rycv_note = binding.rycvMynote
-        val adapterNote = adapter_note()
+        val noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
+
+        val adapterNote = AdapterNote(object : AdapterNote.onItemClickListenerFrag {
+            override fun onItemClick(note: Note) {
+                noteViewModel.deleteNoteVM(note)
+            }
+        })
         rycv_note.adapter = adapterNote
         //rycv_note.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         rycv_note.layoutManager = LinearLayoutManager(context)
-
-        val noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
         noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
             if (!listNotes.isNullOrEmpty()) {
@@ -46,7 +49,6 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
                 txt_notask.visibility = View.VISIBLE
             }
         }
-
 
         val fab = binding.fabAdd
         fab.setOnClickListener {
@@ -63,7 +65,6 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
                         img_notask.visibility = View.GONE
                         txt_notask.visibility = View.GONE
                         adapterNote.updateNotes(listNotes)
-                        Log.d("phu", "onViewCreated: ${listNotes[0]}")
                     } else {
                         img_notask.visibility = View.VISIBLE
                         txt_notask.visibility = View.VISIBLE
@@ -74,8 +75,8 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
                     adapterNote.updateNotes(listNotes)
                 }
             }
-
         }
 
     }
+
 }

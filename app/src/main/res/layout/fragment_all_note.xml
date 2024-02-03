@@ -22,13 +22,7 @@
         android:layout_height="50dp"
         android:layout_toRightOf="@id/txtMyNote"
         android:src="@drawable/cat_allnotefragment" />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:layout_toRightOf="@+id/imgcat"
-        />
+
 
     <EditText
         android:id="@+id/edit_text_search"
@@ -41,24 +35,34 @@
         android:drawableLeft="@drawable/search_allnotefragment"
         android:drawablePadding="5dp"
         android:hint="@string/timkiemghichu"
+        android:imeOptions="actionSearch"
         android:inputType="text"
-        android:padding="12dp"
-        android:imeOptions="actionSearch"/>
+        android:padding="12dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rycv_Mynote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/edit_text_search"
+        android:layout_above="@+id/fab_add"
         android:padding="5dp"
         tools:listitem="@layout/note_item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 
     <ImageView
         android:id="@+id/imgv_noTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:src="@drawable/no_task" />
+        android:src="@drawable/no_task"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/txt_noTask"
@@ -68,5 +72,7 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:text="Chưa có ghi chú !"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:visibility="gone" />
+
 </RelativeLayout>

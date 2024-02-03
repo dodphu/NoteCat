@@ -8,26 +8,34 @@ import com.example.notecat.R
 import com.example.notecat.databinding.NoteItemBinding
 import com.example.notecat.model.Note
 
-class adapter_note : RecyclerView.Adapter<adapter_note.NoteViewHolder>() {
+class AdapterNote(private val listener: onItemClickListenerFrag) : RecyclerView.Adapter<AdapterNote.NoteViewHolder>() {
     private var list_notes: List<Note> = listOf()
+
+    interface onItemClickListenerFrag {
+        fun onItemClick(note: Note)
+    }
 
     inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = NoteItemBinding.bind(itemView)
         val title = binding.titleItem
         val content = binding.contentItem
         val date = binding.dateItem
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): adapter_note.NoteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterNote.NoteViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.note_item, parent, false)
         return NoteViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: adapter_note.NoteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdapterNote.NoteViewHolder, position: Int) {
         holder.title.text = list_notes[position].title
         holder.content.text = list_notes[position].content
         holder.date.text = list_notes[position].date
 
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(list_notes[position])
+        }
     }
 
     override fun getItemCount(): Int {

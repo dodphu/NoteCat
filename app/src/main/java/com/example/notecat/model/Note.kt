@@ -22,7 +22,7 @@ data class Note(
            return Note(null, title, content, date)
        }
        fun getCurrentDateTime(): String {
-           val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+           val dateFormat = SimpleDateFormat("dd/MM/yyyy - HH:mm:ss", Locale.getDefault())
            val currentDate = Calendar.getInstance().time
            return dateFormat.format(currentDate)
        }

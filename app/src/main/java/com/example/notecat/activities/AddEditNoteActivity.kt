@@ -2,6 +2,7 @@ package com.example.notecat.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.notecat.R
 import com.example.notecat.databinding.ActivityAddEditNoteBinding
@@ -26,9 +27,13 @@ class AddEditNoteActivity : AppCompatActivity() {
             finish()
         }
         imgv_save.setOnClickListener {
-            noteViewModel.addNoteVM(
-                Note.createNote("$edt_title_add", "$edt_content_add", Note.getCurrentDateTime())
-            )
+            if (edt_content_add.isEmpty()&& edt_title_add.isEmpty()){
+
+            }else{
+                noteViewModel.addNoteVM(
+                    Note.createNote("$edt_title_add", "$edt_content_add", Note.getCurrentDateTime())
+                )
+            }
             finish()
         }
 
