@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="2dp">
+    android:padding="2dp"
+    android:id="@+id/note_view_item">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/round_corner"
+        android:backgroundTint="@color/white"
         android:orientation="vertical">
 
         <TextView
@@ -27,11 +29,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:inputType="none"
             android:maxLines="5"
             android:padding="5dp"
             android:text="@string/noidungcontents"
             android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/date_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="5dp"
+            android:text="day/month" />
 
     </LinearLayout>
 

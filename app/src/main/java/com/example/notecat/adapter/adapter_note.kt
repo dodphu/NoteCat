@@ -15,6 +15,7 @@ class adapter_note : RecyclerView.Adapter<adapter_note.NoteViewHolder>() {
         val binding = NoteItemBinding.bind(itemView)
         val title = binding.titleItem
         val content = binding.contentItem
+        val date = binding.dateItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): adapter_note.NoteViewHolder {
@@ -25,11 +26,14 @@ class adapter_note : RecyclerView.Adapter<adapter_note.NoteViewHolder>() {
     override fun onBindViewHolder(holder: adapter_note.NoteViewHolder, position: Int) {
         holder.title.text = list_notes[position].title
         holder.content.text = list_notes[position].content
+        holder.date.text = list_notes[position].date
+
     }
 
     override fun getItemCount(): Int {
         return list_notes.size
     }
+
     fun updateNotes(newNotes: List<Note>) {
         list_notes = newNotes
         notifyDataSetChanged()

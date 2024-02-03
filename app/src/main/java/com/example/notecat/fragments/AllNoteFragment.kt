@@ -30,8 +30,8 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         val rycv_note = binding.rycvMynote
         val adapterNote = adapter_note()
         rycv_note.adapter = adapterNote
-        rycv_note.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        //rycv_note.layoutManager = LinearLayoutManager(context)
+        //rycv_note.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        rycv_note.layoutManager = LinearLayoutManager(context)
 
         val noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 

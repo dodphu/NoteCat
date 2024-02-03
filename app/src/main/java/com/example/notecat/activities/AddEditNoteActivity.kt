@@ -27,7 +27,7 @@ class AddEditNoteActivity : AppCompatActivity() {
         }
         imgv_save.setOnClickListener {
             noteViewModel.addNoteVM(
-                Note.createNote("$edt_title_add", "$edt_content_add", "none")
+                Note.createNote("$edt_title_add", "$edt_content_add", Note.getCurrentDateTime())
             )
             finish()
         }
