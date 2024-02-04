@@ -24,9 +24,9 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         val binding = FragmentAllNoteBinding.bind(view)
 
         val edtSearchNote = binding.editTextSearch
-        val txt_notask = binding.txtNoTask
-        val img_notask = binding.imgvNoTask
         val rycv_note = binding.rycvMynote
+        val imgv_notask = binding.imgvNoTask
+        val txt_notask = binding.txtNoTask
         val noteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
         val adapterNote = AdapterNote(object : AdapterNote.onItemClickListenerFrag {
@@ -39,15 +39,8 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         rycv_note.layoutManager = LinearLayoutManager(context)
 
         noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
-            if (!listNotes.isNullOrEmpty()) {
-                img_notask.visibility = View.GONE
-                txt_notask.visibility = View.GONE
-                adapterNote.updateNotes(listNotes)
-                Log.d("phu", "onViewCreated: ${listNotes[0]}")
-            } else {
-                img_notask.visibility = View.VISIBLE
-                txt_notask.visibility = View.VISIBLE
-            }
+            adapterNote.updateNotes(listNotes)
+            hideShowEmpytyNote(listNotes, imgv_notask, txt_notask)
         }
 
         val fab = binding.fabAdd
@@ -59,24 +52,22 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         }
 
         edtSearchNote.addTextChangedListener {
-            if (it!!.trim().isEmpty()) {
-                noteViewModel.getAllNotesVM().observe(viewLifecycleOwner) { listNotes ->
-                    if (!listNotes.isNullOrEmpty()) {
-                        img_notask.visibility = View.GONE
-                        txt_notask.visibility = View.GONE
-                        adapterNote.updateNotes(listNotes)
-                    } else {
-                        img_notask.visibility = View.VISIBLE
-                        txt_notask.visibility = View.VISIBLE
-                    }
-                }
-            } else {
-                noteViewModel.searchNoteVM("%${it}%").observe(viewLifecycleOwner) { listNotes ->
-                    adapterNote.updateNotes(listNotes)
-                }
+            noteViewModel.searchNoteVM("%${it?.trim()}%").observe(viewLifecycleOwner) { listNotes ->
+                adapterNote.updateNotes(listNotes)
+                hideShowEmpytyNote(listNotes, imgv_notask, txt_notask)
             }
         }
 
+    }
+
+    fun hideShowEmpytyNote(list: List<Note>, imgnotast: ImageView, txtnotask: TextView) {
+        if (list.isEmpty()) {
+            imgnotast.visibility = View.VISIBLE
+            txtnotask.visibility = View.VISIBLE
+        } else {
+            imgnotast.visibility = View.GONE
+            txtnotask.visibility = View.GONE
+        }
     }
 
 }

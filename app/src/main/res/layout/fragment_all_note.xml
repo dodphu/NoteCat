@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="All Notes"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -43,8 +44,8 @@
         android:id="@+id/rycv_Mynote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/edit_text_search"
         android:layout_above="@+id/fab_add"
+        android:layout_below="@+id/edit_text_search"
         android:padding="5dp"
         tools:listitem="@layout/note_item" />
 
@@ -52,17 +53,16 @@
         android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:backgroundTint="@color/black" />
 
     <ImageView
         android:id="@+id/imgv_noTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:src="@drawable/no_task"
-        android:visibility="gone" />
+        android:src="@drawable/no_task" />
 
     <TextView
         android:id="@+id/txt_noTask"
@@ -72,7 +72,6 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:text="Chưa có ghi chú !"
-        android:textSize="20sp"
-        android:visibility="gone" />
+        android:textSize="20sp" />
 
 </RelativeLayout>

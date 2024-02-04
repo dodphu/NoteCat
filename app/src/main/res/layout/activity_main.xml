@@ -7,16 +7,14 @@
     tools:context=".activities.MainActivity"
     android:background="#E6FDE9">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/frag_main"
-        android:name="com.example.notecat.fragments.AllNoteFragment"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/nav_bottomnavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_all_note" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bottomnavigation"
@@ -26,7 +24,7 @@
         app:menu="@menu/bottom_nav_bar_menu"
         app:itemIconTint="@color/green"
         app:itemTextColor="@color/green"
-        app:itemIconSize="20dp" />
+        android:layout_marginBottom="0dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
