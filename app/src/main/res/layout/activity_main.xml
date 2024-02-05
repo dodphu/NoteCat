@@ -22,8 +22,8 @@
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_bar_menu"
-        app:itemIconTint="@color/green"
-        app:itemTextColor="@color/green"
+        app:itemIconTint="@color/botton_nav_color_selector"
+        app:itemTextColor="@color/botton_nav_color_selector"
         android:layout_marginBottom="0dp"/>
 
 
