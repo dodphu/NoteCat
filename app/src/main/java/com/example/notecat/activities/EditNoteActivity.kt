@@ -33,6 +33,7 @@ class EditNoteActivity : AppCompatActivity() {
         imgv_cancel.setOnClickListener {
             if (note != null) {
                 noteViewModel.deleteNoteVM(note)
+                Toast.makeText(this,"Xóa thành công !", Toast.LENGTH_SHORT).show()
             }
             finish()
         }
@@ -47,6 +48,7 @@ class EditNoteActivity : AppCompatActivity() {
             }
             if (note != null) {
                 noteViewModel.updateNoteVM(note)
+                Toast.makeText(this,"Đã update !", Toast.LENGTH_SHORT).show()
             }
 
             finish()
