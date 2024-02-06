@@ -54,9 +54,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/baseline_add_24"
+        android:src="@drawable/baseline_add_24_white"
         app:backgroundTint="@color/green"
-        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Button" />
+        app:shapeAppearance="@style/ShapeApp.NoteCat.Fab"
+        android:tint="@color/white" />
 
     <ImageView
         android:id="@+id/imgv_noTask"

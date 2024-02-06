@@ -12,8 +12,8 @@ import java.util.Locale
 data class Note(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
-    val title: String,
-    val content: String,
+    var title: String,
+    var content: String,
     val date: String?
 ) : Serializable {
    // constructor(title: String, content: String, date: String?) : this(null, title, content, date)

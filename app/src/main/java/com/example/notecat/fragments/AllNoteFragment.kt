@@ -2,7 +2,6 @@ package com.example.notecat.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
@@ -11,7 +10,8 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notecat.R
-import com.example.notecat.activities.AddEditNoteActivity
+import com.example.notecat.activities.AddNoteActivity
+import com.example.notecat.activities.EditNoteActivity
 import com.example.notecat.adapter.AdapterNote
 import com.example.notecat.databinding.FragmentAllNoteBinding
 import com.example.notecat.model.Note
@@ -31,7 +31,9 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
 
         val adapterNote = AdapterNote(object : AdapterNote.onItemClickListenerFrag {
             override fun onItemClick(note: Note) {
-                noteViewModel.deleteNoteVM(note)
+                val intent = Intent(context,EditNoteActivity::class.java)
+                intent.putExtra("note_data", note)
+                context?.startActivity(intent)
             }
         })
         rycv_note.adapter = adapterNote
@@ -47,7 +49,7 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         fab.setOnClickListener {
             //noteViewModel.addNoteVM(Note("phuu", "cccc", "phuu"))
             //noteViewModel.addNoteVM(Note.createNote("phu3", "adu", "22-12 -2222"))
-            val intent = Intent(requireContext(), AddEditNoteActivity::class.java)
+            val intent = Intent(requireContext(), AddNoteActivity::class.java)
             startActivity(intent)
         }
 

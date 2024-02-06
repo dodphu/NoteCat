@@ -1,10 +1,8 @@
 package com.example.notecat.adapter
 
-import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.notecat.activities.AddEditNoteActivity
 import com.example.notecat.fragments.AllNoteFragment
 import com.example.notecat.fragments.GroupsFragment
 import com.example.notecat.fragments.SettingsFragment

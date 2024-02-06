@@ -2,19 +2,16 @@ package com.example.notecat.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.notecat.R
-import com.example.notecat.databinding.ActivityAddEditNoteBinding
-import com.example.notecat.databinding.ActivityMainBinding
+import com.example.notecat.databinding.ActivityAddNoteBinding
 import com.example.notecat.model.Note
 import com.example.notecat.viewmodel.NoteViewModel
 
-class AddEditNoteActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAddEditNoteBinding
+class AddNoteActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAddNoteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddEditNoteBinding.inflate(layoutInflater)
+        binding = ActivityAddNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val imgv_back = binding.imgBack
@@ -27,9 +24,9 @@ class AddEditNoteActivity : AppCompatActivity() {
             finish()
         }
         imgv_save.setOnClickListener {
-            if (edt_content_add.isEmpty()&& edt_title_add.isEmpty()){
+            if (edt_content_add.isEmpty() && edt_title_add.isEmpty()) {
 
-            }else{
+            } else {
                 noteViewModel.addNoteVM(
                     Note.createNote("$edt_title_add", "$edt_content_add", Note.getCurrentDateTime())
                 )
