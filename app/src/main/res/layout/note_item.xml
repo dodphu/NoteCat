@@ -20,11 +20,11 @@
             android:layout_marginBottom="5dp"
             android:padding="5dp"
             android:text="@string/tieudetitle"
-            android:textColor="@color/black"
+            android:textColor="@color/cyan"
             android:textSize="20sp"
             android:textStyle="bold"
             android:maxLines="2"
-            android:ellipsize="end"/>
+            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/content_item"

@@ -7,28 +7,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp">
 
         <ImageView
-            android:id="@+id/img_cancel"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
+            android:id="@+id/img_deletess"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/baseline_clear_24" />
 
-        <ImageView
-            android:id="@+id/img_cat_work"
+        <TextView
+            android:id="@+id/spinner_Tag_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/photocat_editing" />
+            android:text="Sửa ghi chú"
+            android:textSize="26sp"
+            android:gravity="center"/>
 
         <ImageView
             android:id="@+id/img_ok_edit"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/baseline_check_24" />
     </LinearLayout>
 
@@ -43,7 +45,8 @@
         android:inputType="text"
         android:padding="15dp"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/cyan"/>
 
     <EditText
         android:id="@+id/edt_content_edit"

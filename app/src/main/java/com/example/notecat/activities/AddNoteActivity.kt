@@ -2,6 +2,7 @@ package com.example.notecat.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.notecat.databinding.ActivityAddNoteBinding
 import com.example.notecat.model.Note
@@ -28,7 +29,7 @@ class AddNoteActivity : AppCompatActivity() {
 
             } else {
                 noteViewModel.addNoteVM(
-                    Note.createNote("$edt_title_add", "$edt_content_add", Note.getCurrentDateTime())
+                    Note(null, "$edt_title_add", "$edt_content_add", Note.getCurrentDateTime())
                 )
             }
             finish()
