@@ -52,4 +52,9 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         viewPager2.unregisterOnPageChangeCallback(callback)
     }
+    fun setPager(position: Int) {
+        viewPager2.currentItem = position
+    }
+
 }
+

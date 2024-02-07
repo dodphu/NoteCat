@@ -16,15 +16,11 @@ data class Note(
     var content: String,
     val date: String?
 ) : Serializable {
-   // constructor(title: String, content: String, date: String?) : this(null, title, content, date)
-   companion object {
-       fun createNote(title: String, content: String, date: String?): Note {
-           return Note(null, title, content, date)
-       }
-       fun getCurrentDateTime(): String {
-           val dateFormat = SimpleDateFormat("dd/MM/yyyy - HH:mm:ss", Locale.getDefault())
-           val currentDate = Calendar.getInstance().time
-           return dateFormat.format(currentDate)
-       }
-   }
+    companion object {
+        fun getCurrentDateTime(): String {
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy - HH:mm:ss", Locale.getDefault())
+            val currentDate = Calendar.getInstance().time
+            return dateFormat.format(currentDate)
+        }
+    }
 }

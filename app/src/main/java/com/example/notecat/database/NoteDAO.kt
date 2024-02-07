@@ -13,7 +13,7 @@ import com.example.notecat.model.Note
 
 @Dao
 interface NoteDAO {
-    @Query("SELECT * FROM Note ORDER BY id DESC")
+    @Query("SELECT * FROM Note ORDER BY date DESC")
     fun getAllNotes(): LiveData<List<Note>>
 
     @Insert(onConflict = OnConflictStrategy.ABORT)

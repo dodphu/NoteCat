@@ -55,9 +55,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:src="@drawable/baseline_add_24_white"
-        app:backgroundTint="@color/green"
-        app:shapeAppearance="@style/ShapeApp.NoteCat.Fab"
-        android:tint="@color/white" />
+        android:tint="@color/white"
+        app:backgroundTint="@color/cyan"
+        app:shapeAppearance="@style/ShapeApp.NoteCat.Fab" />
 
     <ImageView
         android:id="@+id/imgv_noTask"

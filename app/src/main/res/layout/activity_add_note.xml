@@ -43,7 +43,8 @@
         android:inputType="text"
         android:padding="15dp"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/cyan"/>
 
     <EditText
         android:id="@+id/edt_content_add"
