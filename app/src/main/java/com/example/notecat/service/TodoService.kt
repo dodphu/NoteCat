@@ -65,7 +65,7 @@ class TodoService : Service() {
         val closePendingIntent = PendingIntent.getService(this, 102, closeIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.cat_allnotefragment)
+            .setSmallIcon(R.drawable.no_task)
             .setContentTitle(data.todoitem)
             .setContentText("")
             .setContentIntent(pendingIntent)

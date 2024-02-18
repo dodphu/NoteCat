@@ -9,7 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.notecat.R
 import com.example.notecat.activities.AddNoteActivity
 import com.example.notecat.activities.EditNoteActivity
@@ -17,6 +19,7 @@ import com.example.notecat.adapter.AdapterNote
 import com.example.notecat.databinding.FragmentAllNoteBinding
 import com.example.notecat.model.Note
 import com.example.notecat.viewmodel.NoteViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
 
@@ -62,7 +65,36 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
 
         }
 
+        val itemTouchHelper = ItemTouchHelper(object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val swipePosition = viewHolder.adapterPosition
+                val swipeItem = adapterNote.getItem(swipePosition)
+                noteViewModel.deleteNoteVM(swipeItem)
+                noteViewModel.getAllNotesVM()
+                val snackbar = Snackbar.make(
+                    rycv_note,
+                    "Đã Xóa ghi chú !",
+                    Snackbar.LENGTH_LONG
+                )
+                snackbar.setAction("Hoàn tác") {
+                    adapterNote.restoreItem(swipeItem, swipePosition)
+                }
+                snackbar.show()
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(rycv_note)
     }
+
+
 
     fun hideShowEmpytyNote(list: List<Note>, imgnotast: ImageView, txtnotask: TextView) {
         if (list.isEmpty()) {

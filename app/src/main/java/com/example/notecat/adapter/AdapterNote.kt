@@ -9,7 +9,7 @@ import com.example.notecat.databinding.NoteItemBinding
 import com.example.notecat.model.Note
 
 class AdapterNote(private val listener: onItemClickListenerFrag) : RecyclerView.Adapter<AdapterNote.NoteViewHolder>() {
-    private var list_notes: List<Note> = listOf()
+    private var list_notes: MutableList<Note> = mutableListOf()
 
     interface onItemClickListenerFrag {
         fun onItemClick(note: Note)
@@ -43,7 +43,16 @@ class AdapterNote(private val listener: onItemClickListenerFrag) : RecyclerView.
     }
 
     fun updateNotes(newNotes: List<Note>) {
-        list_notes = newNotes
+        list_notes = newNotes.toMutableList()
         notifyDataSetChanged()
     }
+    fun getItem(position: Int): Note {
+        return list_notes[position]
+    }
+
+    fun restoreItem(item: Note, position: Int) {
+        list_notes.add(position, item)
+        notifyItemInserted(position)
+    }
+
 }

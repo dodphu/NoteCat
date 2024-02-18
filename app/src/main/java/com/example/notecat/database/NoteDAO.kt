@@ -25,6 +25,6 @@ interface NoteDAO {
     @Delete()
     suspend fun deleteNote(note: Note)
 
-    @Query("SELECT * FROM note WHERE title LIKE :keySearch OR content LIKE :keySearch OR date LIKE :keySearch")
+    @Query("SELECT * FROM note WHERE title LIKE :keySearch OR content LIKE :keySearch OR date LIKE :keySearch ORDER BY date DESC")
     fun searchNotes(keySearch: String): LiveData<List<Note>>
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notecat.R
@@ -45,31 +46,29 @@ class GroupsFragment : Fragment(R.layout.fragment_groups) {
 
         //hien thi date ngay hien tai
         val currentDate = Calendar.getInstance()
-        val selectedDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(currentDate.time)
-        noteViewModel.searchNoteVM("%${selectedDateString}%").observe(viewLifecycleOwner) { listNotes ->
-            adapterNote.updateNotes(listNotes)
-            for(i in listNotes){
-                Log.d("phu", "onViewCreated: ${i.title}")
-            }
-        }
-
-        calendarv.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val selectedDate = Calendar.getInstance()
-            selectedDate.set(year, month, dayOfMonth)
-
-            // Lấy ngày được chọn
-            val selectedDateString =
-                SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate.time)
-
-          //  Log.d("phu", "onViewCreated: $selectedDateString")
-
-            noteViewModel.searchNoteVM("%${selectedDateString}%").observe(viewLifecycleOwner) { listNotes ->
-                 adapterNote.updateNotes(listNotes)
-                for(i in listNotes){
+        val selectedDateString =
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(currentDate.time)
+        noteViewModel.searchNoteVM("%${selectedDateString}%")
+            .observe(viewLifecycleOwner) { listNotes ->
+                adapterNote.updateNotes(listNotes)
+                for (i in listNotes) {
                     Log.d("phu", "onViewCreated: ${i.title}")
                 }
             }
 
+        calendarv.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            val selectedDate = Calendar.getInstance()
+            selectedDate.set(year, month, dayOfMonth)
+            // Lấy ngày được chọn
+            val selectedDateString =
+                SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate.time)
+            //  Log.d("phu", "onViewCreated: $selectedDateString")
+            noteViewModel.searchNoteVM("%${selectedDateString}%").observe(viewLifecycleOwner) { listNotes ->
+                    adapterNote.updateNotes(listNotes)
+                    for (i in listNotes) {
+                        Log.d("phu", "onViewCreated: ${i.title}")
+                    }
+                }
         }
     }
 }
