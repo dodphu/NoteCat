@@ -1,6 +1,8 @@
 package com.example.notecat.fragments
 
 import android.content.Intent
+import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -20,6 +22,7 @@ import com.example.notecat.databinding.FragmentAllNoteBinding
 import com.example.notecat.model.Note
 import com.example.notecat.viewmodel.NoteViewModel
 import com.google.android.material.snackbar.Snackbar
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
 
@@ -66,7 +69,7 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
         }
 
         val itemTouchHelper = ItemTouchHelper(object :
-            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT ) {
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -76,24 +79,64 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val swipePosition = viewHolder.adapterPosition
+                val swipePosition = viewHolder.bindingAdapterPosition
                 val swipeItem = adapterNote.getItem(swipePosition)
                 noteViewModel.deleteNoteVM(swipeItem)
-                noteViewModel.getAllNotesVM()
                 val snackbar = Snackbar.make(
                     rycv_note,
                     "Đã Xóa ghi chú !",
                     Snackbar.LENGTH_LONG
                 )
                 snackbar.setAction("Hoàn tác") {
-                    adapterNote.restoreItem(swipeItem, swipePosition)
+                    noteViewModel.addNoteVM(swipeItem)
+                    rycv_note.scrollToPosition(swipePosition)
                 }
                 snackbar.show()
+            }
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+                val decorator = RecyclerViewSwipeDecorator.Builder(
+                    requireContext(),
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+
+                decorator.addSwipeLeftLabel("Xóa")
+                    .addSwipeLeftActionIcon(R.drawable.baseline_clear_24_white)
+                    .addSwipeLeftBackgroundColor(Color.RED)
+                    .addSwipeRightLabel("Tạo todo")
+                    .setSwipeLeftLabelColor(Color.WHITE)
+                    .addSwipeRightActionIcon(R.drawable.checklist)
+                    .addSwipeRightBackgroundColor(Color.GREEN)
+                    .setSwipeRightLabelColor(Color.WHITE)
+                    .create()
+                    .decorate()
             }
         })
         itemTouchHelper.attachToRecyclerView(rycv_note)
     }
-
 
 
     fun hideShowEmpytyNote(list: List<Note>, imgnotast: ImageView, txtnotask: TextView) {

@@ -50,9 +50,6 @@ class AdapterNote(private val listener: onItemClickListenerFrag) : RecyclerView.
         return list_notes[position]
     }
 
-    fun restoreItem(item: Note, position: Int) {
-        list_notes.add(position, item)
-        notifyItemInserted(position)
-    }
+
 
 }

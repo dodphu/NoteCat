@@ -60,4 +60,5 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    implementation("it.xabaras.android:recyclerview-swipedecorator:1.4")
 }
