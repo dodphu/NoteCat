@@ -54,8 +54,6 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
 
         val fab = binding.fabAdd
         fab.setOnClickListener {
-            //noteViewModel.addNoteVM(Note("phuu", "cccc", "phuu"))
-            //noteViewModel.addNoteVM(Note.createNote("phu3", "adu", "22-12 -2222"))
             val intent = Intent(requireContext(), AddNoteActivity::class.java)
             startActivity(intent)
         }
@@ -84,7 +82,7 @@ class AllNoteFragment : Fragment(R.layout.fragment_all_note) {
                 noteViewModel.deleteNoteVM(swipeItem)
                 val snackbar = Snackbar.make(
                     rycv_note,
-                    "Đã Xóa ghi chú !",
+                    "Đã xóa ghi chú !",
                     Snackbar.LENGTH_LONG
                 )
                 snackbar.setAction("Hoàn tác") {

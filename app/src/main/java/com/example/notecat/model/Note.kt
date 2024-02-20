@@ -1,5 +1,7 @@
 package com.example.notecat.model
 
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -14,7 +16,8 @@ data class Note(
     var id: Int? = null,
     var title: String,
     var content: String,
-    val date: String?
+    val date: String?,
+    var color: Int?
 ) : Serializable {
     companion object {
         fun getCurrentDateTime(): String {

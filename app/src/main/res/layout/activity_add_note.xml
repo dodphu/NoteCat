@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_newnotes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:padding="5dp"
             android:src="@drawable/baseline_arrow_back_24" />
 
         <TextView
@@ -26,11 +28,18 @@
             android:text="Ghi chú mới"
             android:textSize="26sp"
             android:gravity="center"/>
+        <ImageView
+            android:id="@+id/img_changeColor"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:src="@drawable/baseline_color_lens_24"/>
 
         <ImageView
             android:id="@+id/img_save_note"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:padding="5dp"
             android:src="@drawable/save" />
     </LinearLayout>
 
@@ -46,7 +55,8 @@
         android:padding="15dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/cyan"/>
+        android:textColor="@color/cyan"
+        />
 
     <EditText
         android:id="@+id/edt_content_add"
@@ -57,6 +67,12 @@
         android:hint="@string/noidungaddnote"
         android:padding="15dp"
         android:textSize="15sp" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_change_color"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@color/cyan"
+        android:layout_gravity="end|bottom" />
 
 
 </LinearLayout>
