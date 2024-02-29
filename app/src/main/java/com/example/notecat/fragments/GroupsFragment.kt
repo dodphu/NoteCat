@@ -51,9 +51,6 @@ class GroupsFragment : Fragment(R.layout.fragment_groups) {
         noteViewModel.searchNoteVM("%${selectedDateString}%")
             .observe(viewLifecycleOwner) { listNotes ->
                 adapterNote.updateNotes(listNotes)
-                for (i in listNotes) {
-                    Log.d("phu", "onViewCreated: ${i.title}")
-                }
             }
 
         calendarv.setOnDateChangeListener { view, year, month, dayOfMonth ->
@@ -63,10 +60,13 @@ class GroupsFragment : Fragment(R.layout.fragment_groups) {
             val selectedDateString =
                 SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate.time)
             //  Log.d("phu", "onViewCreated: $selectedDateString")
-            noteViewModel.searchNoteVM("%${selectedDateString}%").observe(viewLifecycleOwner) { listNotes ->
+            noteViewModel.searchNoteVM("%${selectedDateString}%")
+                .observe(viewLifecycleOwner) { listNotes ->
                     adapterNote.updateNotes(listNotes)
-                    for (i in listNotes) {
-                        Log.d("phu", "onViewCreated: ${i.title}")
+                    if (listNotes.isEmpty()) {
+                        txt_count.text = "Không có ghi chú !"
+                    } else {
+                        txt_count.text = "Có ${listNotes.size} ghi chú !"
                     }
                 }
         }

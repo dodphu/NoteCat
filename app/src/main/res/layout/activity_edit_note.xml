@@ -29,6 +29,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Sửa ghi chú"
+            android:textColor="@color/cyan"
             android:textSize="26sp" />
 
         <ImageView
@@ -44,19 +45,19 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:padding="5dp"
-            android:src="@drawable/baseline_check_24" />
+            android:src="@drawable/baseline_done_24" />
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        android:layout_marginBottom="5dp">
 
         <EditText
             android:id="@+id/edt_title_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:background="@color/white"
             android:gravity="start"
             android:hint="@string/tieudehintadd"

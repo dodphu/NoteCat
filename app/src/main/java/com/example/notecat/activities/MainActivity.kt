@@ -1,7 +1,9 @@
 package com.example.notecat.activities
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewpager2.widget.ViewPager2
 import com.example.notecat.R
 import com.example.notecat.adapter.AdapterViewpager2
@@ -12,6 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewPager2: ViewPager2
     private lateinit var callback: ViewPager2.OnPageChangeCallback
+    private val PREFS_NAME = "MyPrefsFile"
+    private val NIGHT_MODE = "NightMode"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +50,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
         viewPager2.registerOnPageChangeCallback(callback)
+
+        getNightMode()
+    }
+
+    private fun getNightMode() {
+        val sharedPreferences = this.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val isNightMode = sharedPreferences.getBoolean(NIGHT_MODE, false)
+        if (isNightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
     }
 
     override fun onDestroy() {

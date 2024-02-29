@@ -5,12 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".fragments.TodoFragment">
+    tools:context=".fragments.TodoFragment"
+    android:padding="5dp">
 
+    <TextView
+        android:id="@+id/txttodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Todo"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/cyan" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rycv_todo"
         android:layout_width="match_parent"
+        android:layout_below="@id/txttodo"
         android:layout_height="match_parent"
         tools:listitem="@layout/todo_item" />
 
