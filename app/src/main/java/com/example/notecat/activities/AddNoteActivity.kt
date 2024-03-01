@@ -1,5 +1,6 @@
 package com.example.notecat.activities
 
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,18 +41,19 @@ class AddNoteActivity : AppCompatActivity(),OnItemClickListenerrr {
 
             } else {
                 val backgroundDrawable = view_newnote.background
+                var backgroundColor = Color.WHITE
                 if (backgroundDrawable is ColorDrawable) {
-                    val backgroundColor = backgroundDrawable.color
-                    noteViewModel.addNoteVM(
-                        Note(
-                            null,
-                            "$edt_title_add",
-                            "$edt_content_add",
-                            Note.getCurrentDateTime(),
-                            backgroundColor
-                        )
-                    )
+                    backgroundColor = backgroundDrawable.color
                 }
+                noteViewModel.addNoteVM(
+                    Note(
+                        null,
+                        "$edt_title_add",
+                        "$edt_content_add",
+                        Note.getCurrentDateTime(),
+                        backgroundColor
+                    )
+                )
             }
             finish()
         }
