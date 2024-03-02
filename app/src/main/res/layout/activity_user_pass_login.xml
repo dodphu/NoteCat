@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.UserPassLoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="LOGIN"
+        android:textSize="28sp" />
+
+    <EditText
+        android:id="@+id/txt_Email_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/txt_pass_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:inputType="numberPassword"/>
+
+    <CheckBox
+        android:id="@+id/cbx_autologin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu mật khẩu"
+        android:checked="true"/>
+    <Button
+        android:id="@+id/btn_login_Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+</LinearLayout>
