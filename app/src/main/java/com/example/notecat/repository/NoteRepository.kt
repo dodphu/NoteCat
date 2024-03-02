@@ -11,6 +11,7 @@ class NoteRepository(context: Context) {
     suspend fun addNoteRepos(note: Note) = noteDao.addNote(note)
     suspend fun updateNotesRepos(note: Note) = noteDao.updateNotes(note)
     suspend fun deleteNoteRepos(note: Note) = noteDao.deleteNote(note)
+
     fun searchNoteRepos(keysearch: String) = noteDao.searchNotes(keysearch)
 
 }

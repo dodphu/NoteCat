@@ -89,6 +89,44 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="100dp">
+
+            <ImageView
+                android:id="@+id/img_savefirebase"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/orange"
+                android:padding="9dp"
+                android:src="@drawable/baseline_browser_updated_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txt_savefirebase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="Đồng bộ hóa"
+            android:textSize="20sp" />
+
+        <Switch
+            android:id="@+id/switchsavefirebase"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linear_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

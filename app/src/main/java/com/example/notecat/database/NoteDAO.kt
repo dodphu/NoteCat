@@ -27,4 +27,6 @@ interface NoteDAO {
 
     @Query("SELECT * FROM note WHERE title LIKE :keySearch OR content LIKE :keySearch OR date LIKE :keySearch ORDER BY date DESC")
     fun searchNotes(keySearch: String): LiveData<List<Note>>
+
+
 }
