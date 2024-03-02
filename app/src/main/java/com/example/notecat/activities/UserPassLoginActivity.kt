@@ -38,6 +38,7 @@ class UserPassLoginActivity : AppCompatActivity() {
         val passlogin = binding.txtPassLogin
         val btnloginz = binding.btnLoginLogin
         val cbxsavetk = binding.cbxAutologin
+        val btnsignup = binding.btnLoginSignuupp
 
         btnloginz.setOnClickListener {
             try {
@@ -45,6 +46,9 @@ class UserPassLoginActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
             }
+        }
+        btnsignup.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
         getNightMode()
 

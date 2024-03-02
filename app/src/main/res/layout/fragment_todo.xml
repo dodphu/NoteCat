@@ -5,36 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".fragments.TodoFragment"
-    android:padding="5dp">
+    android:padding="5dp"
+    tools:context=".fragments.TodoFragment">
 
     <TextView
         android:id="@+id/txttodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Todo"
+        android:textColor="@color/cyan"
         android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="@color/cyan" />
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rycv_todo"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/txttodo"
-        android:layout_height="match_parent"
         tools:listitem="@layout/todo_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_todo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:src="@drawable/baseline_add_24_white"
         android:tint="@color/white"
         app:backgroundTint="@color/cyan"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         app:shapeAppearance="@style/ShapeApp.NoteCat.Fab" />
-
 
 
 </RelativeLayout>

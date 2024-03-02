@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".activities.UserPassLoginActivity">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="LOGIN"
+        android:textColor="@color/cyan"
         android:textSize="28sp" />
 
     <EditText
@@ -34,9 +36,17 @@
         android:layout_height="wrap_content"
         android:text="Lưu mật khẩu"
         android:checked="true"/>
+
     <Button
         android:id="@+id/btn_login_Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="Đăng nhập"
+        android:backgroundTint="@color/green"/>
+    <Button
+        android:id="@+id/btn_login_signuupp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng kí"
+        android:backgroundTint="@color/red"/>
 </LinearLayout>

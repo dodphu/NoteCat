@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/cyan"
         android:layout_weight="1"
-        android:text="This is task 1 This is task 1 This is task 1 This is task 1"
-        />
+        android:text="This is task 1 This is task 1 This is task 1 This is task 1" />
     <ImageView
         android:id="@+id/imgv_noti"
         android:layout_width="40dp"

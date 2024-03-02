@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.notecat.R
 import com.example.notecat.activities.SignUpActivity
+import com.example.notecat.activities.UserPassLoginActivity
 import com.example.notecat.databinding.FragmentSettingsBinding
 import com.example.notecat.viewmodel.NoteViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -76,7 +77,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         }
 
         linearlogin.setOnClickListener {
-            val intent = Intent(activity, SignUpActivity::class.java)
+            val intent = Intent(activity, UserPassLoginActivity::class.java)
             startActivity(intent)
         }
 
